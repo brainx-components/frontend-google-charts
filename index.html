@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/googleCharts.css">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
 
 
   <!--Load the AJAX API-->
@@ -26,6 +27,8 @@
 
       // Set a callback to run when the Google Visualization API is loaded.
       google.charts.setOnLoadCallback(drawChart);
+      google.charts.setOnLoadCallback(drawLineChart);
+      google.charts.setOnLoadCallback(drawRegionsMap);
 
       // Callback that creates and populates a data table,
       // instantiates the pie chart, passes in the data and
@@ -52,7 +55,55 @@
 
 
           // Instantiate and draw our chart, passing in some options.
-          var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+          var chart = new google.visualization.LineChart(document.getElementById('line_chart'));
+          chart.draw(data, options);
+      }
+
+      function drawLineChart(){
+
+          // Create the data table.
+          var data = new google.visualization.DataTable();
+          data.addColumn('string', 'Topping');
+          data.addColumn('number', 'Slices');
+          data.addRows([
+              ['Mushrooms', 35],
+              ['Onions', 20],
+              ['Olives', 10],
+              ['Zucchini', 28],
+              ['Pepperoni', 29]
+          ]);
+
+          // Set chart options
+          var options = {'title':'How Much Pizza I Ate Last Night',
+              'width':400,
+              'height':300
+          };
+
+
+          // Instantiate and draw our chart, passing in some options.
+          var chart = new google.visualization.BarChart(document.getElementById('bar_chart'));
+          chart.draw(data, options);
+      }
+
+
+      function drawRegionsMap() {
+          var data = google.visualization.arrayToDataTable([
+              ['Country', 'Popularity'],
+              ['Germany', 200],
+              ['United States', 300],
+              ['Brazil', 400],
+              ['Canada', 500],
+              ['France', 600],
+              ['Pakistan', 600],
+              ['RU', 700]
+          ]);
+
+          var options = {'title':'Countries with their popularity',
+              'width':400,
+              'height':300};
+
+          var chart = new google.visualization.GeoChart(document.getElementById('geo_chart'));
+
           chart.draw(data, options);
       }
   </script>
@@ -66,7 +117,25 @@
 
   <!-- Add your site or application content here -->
   <!--Div that will hold the pie chart-->
-  <div id="chart_div"></div>
+  <div class="row chart-parent">
+
+    <div class="chart col-md-3 col-sm-4" >
+      <h1>Line Chart</h1>
+      <div id="line_chart"></div>
+    </div>
+
+    <div class="chart col-md-3 col-sm-4" >
+      <h1>Bar Chart</h1>
+      <div id="bar_chart"></div>
+    </div>
+
+    <div class="chart col-md-3 col-sm-4" >
+      <h1>Geo Chart</h1>
+      <div id="geo_chart"></div>
+    </div>
+
+    <!--<div class="chart col-md-3 col-sm-4" id="bar_chart"></div>-->
+  </div>
 
 
 
