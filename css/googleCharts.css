@@ -1,5 +1,5 @@
 body{
-    background-color: #dbdbdb !important;
+    background-color: #F6F6F6 !important;
 }
 
 .chart{
@@ -7,17 +7,22 @@ body{
     /*padding-left: 10px;*/
 }
 
-.chart div{
-    /*width: 100%;*/
-    /*!*min-height: 350px;*!/*/
+.chart-parent{
+    align-content: center;
 }
-
-/*.chart-parent{*/
-    /*width: 100%;*/
-    /*margin: auto !important;*/
-/*}*/
 
 .chart h1{
     text-align: center;
     color: #5a5a5a;
+}
+
+.heading h1{
+    padding-top: 40px;
+    padding-bottom: 20px;
+    text-align: center;
+    color: #03A8F5;
+}
+.row{
+    padding: 0px !important;
+    margin: 0px !important;
 }
