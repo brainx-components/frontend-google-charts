@@ -29,37 +29,37 @@
   <!--Div that will hold the pie chart-->
 
   <div class="heading">
-    <h1>Brainx Google Chart Component</h1>
+    <h1>Brainx Google Charts Component</h1>
   </div>
 
   <div class="row chart-parent">
 
-    <div class="chart col-md-3 col-sm-4" >
+    <div class="chart col-md-4 col-sm-6" >
       <h1>Line Chart</h1>
       <div id="line_chart"></div>
     </div>
 
-    <div class="chart col-md-3 col-sm-4" >
+    <div class="chart col-md-4 col-sm-6" >
       <h1>Bar Chart</h1>
       <div id="bar_chart"></div>
     </div>
 
-    <div class="chart col-md-3 col-sm-4" >
+    <div class="chart col-md-4 col-sm-6" >
       <h1>Geo Chart</h1>
       <div id="geo_chart"></div>
     </div>
 
-    <div class="chart col-md-3 col-sm-4" >
+    <div class="chart col-md-4 col-sm-6" >
       <h1>Pie Chart</h1>
       <div id="pie_chart"></div>
     </div>
 
-    <div class="chart col-md-3 col-sm-4" >
+    <div class="chart col-md-4 col-sm-6" >
       <h1>Scatter Chart</h1>
       <div id="scatter_chart"></div>
     </div>
 
-    <div class="chart col-md-3 col-sm-4" >
+    <div class="chart col-md-4 col-sm-6" >
       <h1>Donut Chart</h1>
       <div id="donutchart"></div>
     </div>
@@ -79,6 +79,17 @@
   <!--Load the AJAX API-->
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
   <script type="text/javascript">
+
+      $(window).resize(function(){
+          drawChart();
+          drawLineChart();
+          drawRegionsMap();
+          drawDonutChart();
+          drawScatterChart();
+          drawPieChart();
+
+      });
+
 
       // Load the Visualization API and the corechart package.
       google.charts.load('current', {'packages':['corechart']});
@@ -110,7 +121,7 @@
 
           // Set chart options
           var options = {'title':'How Much Pizza I Ate Last Night',
-              'width':400,
+              'width':'100%',
               'height':300
           };
 
@@ -136,7 +147,7 @@
 
           // Set chart options
           var options = {'title':'How Much Pizza I Ate Last Night',
-              'width':400,
+              'width':'100%',
               'height':300
           };
 
@@ -160,7 +171,7 @@
           ]);
 
           var options = {'title':'Countries with their popularity',
-              'width':400,
+              'width':'100%',
               'height':300};
 
           var chart = new google.visualization.GeoChart(document.getElementById('geo_chart'));
@@ -181,7 +192,7 @@
 
           var options = {
               title: 'My Daily Activities',
-              'width':400,
+              'width':'100%',
               'height':300
           };
 
@@ -206,7 +217,7 @@
               hAxis: {title: 'Age', minValue: 0, maxValue: 15},
               vAxis: {title: 'Weight', minValue: 0, maxValue: 15},
               legend: 'none',
-              'width':400,
+              'width':'100%',
               'height':300
           };
 
@@ -229,7 +240,7 @@
           var options = {
               title: 'My Daily Activities',
               pieHole: 0.4,
-              'width':400,
+              'width':'100%',
               'height':300
           };
 
